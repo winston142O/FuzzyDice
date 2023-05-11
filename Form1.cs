@@ -7,7 +7,7 @@ namespace FuzzyDice
 
         // Definicion de variables y su valor inicial
         private double OrderTotal = 0.00;
-        private double Subtotal = 0.00;       
+        private double Subtotal = 0.00;
         private double taxTotal = 0.00;
         private double shipping;
         private double discount = 0.00;
@@ -26,20 +26,8 @@ namespace FuzzyDice
             // actualizar total de dados comprados
             diceQty += qty;
             // calcular precio de los dados
-            double diceTotal = qty * price;            
+            double diceTotal = qty * price;
             objTextBox.Text = String.Format("${0:F2}", diceTotal);
-        }
-
-        private void verifyShipping()
-        {
-            if (diceQty >= 1 && diceQty <= 20)
-            {
-                shipping = 1.50;
-            }
-            else
-            {
-                shipping = 0.00;
-            }
         }
 
         private void AddToSubtotal(TextBox DiceSubtotal, TextBox Total)
@@ -49,7 +37,7 @@ namespace FuzzyDice
             double subtotal = Convert.ToDouble(valorTexto);
             Subtotal += subtotal;
             Total.Text = String.Format("${0:F2}", Subtotal);
-        }       
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -80,7 +68,7 @@ namespace FuzzyDice
                 e.Handled = false;
                 if (txtWB_Qty.Focused)
                 {
-                    DialogResult resp = MessageBox.Show(String.Format("¿Deseas agregar el monto {0:F2} al total de esta orden?", txtWB_Total.Text), "Confirmar", MessageBoxButtons.YesNo);
+                    DialogResult resp = MessageBox.Show(String.Format("Do you wish to add the amount of {0:F2} to the order?", txtWB_Total.Text), "Confirm", MessageBoxButtons.YesNo);
                     if (resp == DialogResult.Yes)
                     {
                         AddToSubtotal(txtWB_Total, txtSubtotal);
@@ -92,7 +80,7 @@ namespace FuzzyDice
                 }
                 else if (txtRB_Qty.Focused)
                 {
-                    DialogResult resp = MessageBox.Show(String.Format("¿Deseas agregar el monto {0:F2} al total de esta orden?", txtRB_Total.Text), "Confirmar", MessageBoxButtons.YesNo);
+                    DialogResult resp = MessageBox.Show(String.Format("Do you wish to add the amount of {0:F2} to the order?", txtRB_Total.Text), "Confirm", MessageBoxButtons.YesNo);
                     if (resp == DialogResult.Yes)
                     {
                         AddToSubtotal(txtRB_Total, txtSubtotal);
@@ -104,7 +92,7 @@ namespace FuzzyDice
                 }
                 else if (txtBB_Qty.Focused)
                 {
-                    DialogResult resp = MessageBox.Show(String.Format("¿Deseas agregar el monto {0:F2} al total de esta orden?", txtBB_Total.Text), "Confirmar", MessageBoxButtons.YesNo);
+                    DialogResult resp = MessageBox.Show(String.Format("Do you wish to add the amount of {0:F2} to the order?", txtBB_Total.Text), "Confirm", MessageBoxButtons.YesNo);
                     if (resp == DialogResult.Yes)
                     {
                         AddToSubtotal(txtBB_Total, txtSubtotal);
@@ -199,7 +187,7 @@ namespace FuzzyDice
                 txtBB_Qty.Enabled = false;
             }
         }
-
+        
         private void txtSubtotal_TextChanged(object sender, EventArgs e)
         {
             // añadir impuestos
@@ -221,7 +209,15 @@ namespace FuzzyDice
             }
             // Asignar envio
             // shipping not working
-            verifyShipping();
+            
+            if (diceQty >= 1 && diceQty <= 20)
+            {
+                shipping = 1.50;
+            }
+            else if (diceQty > 20)
+            {
+                shipping = 0.00;
+            }
             txtShipping.Text = String.Format("${0:F2}", shipping);
 
         }
