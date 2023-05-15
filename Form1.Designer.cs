@@ -68,7 +68,6 @@
             txtTax = new TextBox();
             txtSubtotal = new TextBox();
             lblSubtotal = new Label();
-            txtDiceTotal = new TextBox();
             pnlOrderNumber.SuspendLayout();
             pnlCustomerDetails.SuspendLayout();
             pnlOrder.SuspendLayout();
@@ -111,6 +110,7 @@
             txtOrderNumber.Name = "txtOrderNumber";
             txtOrderNumber.Size = new Size(79, 26);
             txtOrderNumber.TabIndex = 3;
+            txtOrderNumber.TabStop = false;
             // 
             // pnlCustomerDetails
             // 
@@ -132,7 +132,7 @@
             txtAddress3.Name = "txtAddress3";
             txtAddress3.PlaceholderText = "Customer 's Address Line 3";
             txtAddress3.Size = new Size(329, 26);
-            txtAddress3.TabIndex = 5;
+            txtAddress3.TabIndex = 3;
             // 
             // txtAddress2
             // 
@@ -141,7 +141,7 @@
             txtAddress2.Name = "txtAddress2";
             txtAddress2.PlaceholderText = "Customer's Address Line 2";
             txtAddress2.Size = new Size(329, 26);
-            txtAddress2.TabIndex = 5;
+            txtAddress2.TabIndex = 2;
             // 
             // txtAddress1
             // 
@@ -150,7 +150,7 @@
             txtAddress1.Name = "txtAddress1";
             txtAddress1.PlaceholderText = "Customer's Address Line 1";
             txtAddress1.Size = new Size(329, 26);
-            txtAddress1.TabIndex = 5;
+            txtAddress1.TabIndex = 1;
             // 
             // txtName
             // 
@@ -159,7 +159,7 @@
             txtName.Name = "txtName";
             txtName.PlaceholderText = "Customer's Name";
             txtName.Size = new Size(329, 26);
-            txtName.TabIndex = 5;
+            txtName.TabIndex = 0;
             // 
             // lblAddress
             // 
@@ -213,6 +213,7 @@
             txtBB_Price.ReadOnly = true;
             txtBB_Price.Size = new Size(86, 19);
             txtBB_Price.TabIndex = 9;
+            txtBB_Price.TabStop = false;
             // 
             // txtRB_Price
             // 
@@ -223,6 +224,7 @@
             txtRB_Price.ReadOnly = true;
             txtRB_Price.Size = new Size(86, 19);
             txtRB_Price.TabIndex = 9;
+            txtRB_Price.TabStop = false;
             // 
             // txtWB_Price
             // 
@@ -233,6 +235,7 @@
             txtWB_Price.ReadOnly = true;
             txtWB_Price.Size = new Size(86, 19);
             txtWB_Price.TabIndex = 9;
+            txtWB_Price.TabStop = false;
             // 
             // txtBB_Qty
             // 
@@ -240,7 +243,7 @@
             txtBB_Qty.Location = new Point(133, 103);
             txtBB_Qty.Name = "txtBB_Qty";
             txtBB_Qty.Size = new Size(105, 26);
-            txtBB_Qty.TabIndex = 3;
+            txtBB_Qty.TabIndex = 9;
             txtBB_Qty.TextChanged += txtWB_Qty_TextChanged;
             txtBB_Qty.KeyPress += txtWB_Qty_KeyPress;
             // 
@@ -250,7 +253,7 @@
             txtRB_Qty.Location = new Point(133, 71);
             txtRB_Qty.Name = "txtRB_Qty";
             txtRB_Qty.Size = new Size(105, 26);
-            txtRB_Qty.TabIndex = 3;
+            txtRB_Qty.TabIndex = 7;
             txtRB_Qty.TextChanged += txtWB_Qty_TextChanged;
             txtRB_Qty.KeyPress += txtWB_Qty_KeyPress;
             // 
@@ -262,6 +265,7 @@
             txtBB_Total.ReadOnly = true;
             txtBB_Total.Size = new Size(105, 26);
             txtBB_Total.TabIndex = 3;
+            txtBB_Total.TabStop = false;
             // 
             // txtRB_Total
             // 
@@ -271,6 +275,7 @@
             txtRB_Total.ReadOnly = true;
             txtRB_Total.Size = new Size(105, 26);
             txtRB_Total.TabIndex = 3;
+            txtRB_Total.TabStop = false;
             // 
             // txtWB_Total
             // 
@@ -280,6 +285,7 @@
             txtWB_Total.ReadOnly = true;
             txtWB_Total.Size = new Size(105, 26);
             txtWB_Total.TabIndex = 3;
+            txtWB_Total.TabStop = false;
             // 
             // txtWB_Qty
             // 
@@ -287,7 +293,7 @@
             txtWB_Qty.Location = new Point(133, 39);
             txtWB_Qty.Name = "txtWB_Qty";
             txtWB_Qty.Size = new Size(105, 26);
-            txtWB_Qty.TabIndex = 3;
+            txtWB_Qty.TabIndex = 5;
             txtWB_Qty.TextChanged += txtWB_Qty_TextChanged;
             txtWB_Qty.KeyPress += txtWB_Qty_KeyPress;
             // 
@@ -310,7 +316,7 @@
             chkRedBlack.Location = new Point(14, 73);
             chkRedBlack.Name = "chkRedBlack";
             chkRedBlack.Size = new Size(91, 22);
-            chkRedBlack.TabIndex = 8;
+            chkRedBlack.TabIndex = 6;
             chkRedBlack.Text = "Red/Black";
             chkRedBlack.UseVisualStyleBackColor = true;
             chkRedBlack.CheckedChanged += chkRedBlack_CheckedChanged;
@@ -322,7 +328,7 @@
             chkWhiteBlack.Location = new Point(14, 43);
             chkWhiteBlack.Name = "chkWhiteBlack";
             chkWhiteBlack.Size = new Size(103, 22);
-            chkWhiteBlack.TabIndex = 8;
+            chkWhiteBlack.TabIndex = 4;
             chkWhiteBlack.Text = "White/Black";
             chkWhiteBlack.UseVisualStyleBackColor = true;
             chkWhiteBlack.CheckedChanged += chkWhiteBlack_CheckedChanged;
@@ -444,6 +450,7 @@
             txtOrderTotal.ReadOnly = true;
             txtOrderTotal.Size = new Size(105, 26);
             txtOrderTotal.TabIndex = 3;
+            txtOrderTotal.TabStop = false;
             // 
             // txtDiscount
             // 
@@ -453,6 +460,7 @@
             txtDiscount.ReadOnly = true;
             txtDiscount.Size = new Size(105, 26);
             txtDiscount.TabIndex = 3;
+            txtDiscount.TabStop = false;
             // 
             // txtShipping
             // 
@@ -462,6 +470,7 @@
             txtShipping.ReadOnly = true;
             txtShipping.Size = new Size(105, 26);
             txtShipping.TabIndex = 3;
+            txtShipping.TabStop = false;
             // 
             // txtTax
             // 
@@ -471,6 +480,7 @@
             txtTax.ReadOnly = true;
             txtTax.Size = new Size(105, 26);
             txtTax.TabIndex = 3;
+            txtTax.TabStop = false;
             // 
             // txtSubtotal
             // 
@@ -480,6 +490,7 @@
             txtSubtotal.ReadOnly = true;
             txtSubtotal.Size = new Size(105, 26);
             txtSubtotal.TabIndex = 3;
+            txtSubtotal.TabStop = false;
             txtSubtotal.TextChanged += txtSubtotal_TextChanged;
             // 
             // lblSubtotal
@@ -492,19 +503,12 @@
             lblSubtotal.TabIndex = 7;
             lblSubtotal.Text = "Subtotal: ";
             // 
-            // txtDiceTotal
-            // 
-            txtDiceTotal.Location = new Point(67, 489);
-            txtDiceTotal.Name = "txtDiceTotal";
-            txtDiceTotal.Size = new Size(100, 23);
-            txtDiceTotal.TabIndex = 11;
-            // 
             // Form1
             // 
+            AcceptButton = btnCalculate;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(510, 689);
-            Controls.Add(txtDiceTotal);
             Controls.Add(panel1);
             Controls.Add(pnlOrder);
             Controls.Add(pnlCustomerDetails);
@@ -568,6 +572,5 @@
         private TextBox txtSubtotal;
         private Button btnCalculate;
         private TextBox txtRB_Price;
-        private TextBox txtDiceTotal;
     }
 }

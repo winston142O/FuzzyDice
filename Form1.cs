@@ -21,7 +21,7 @@ namespace FuzzyDice
         }
 
         private void CalcDicePrice(int qty, double price, TextBox objTextBox)
-        {            
+        {
             // calcular precio de los dados
             double diceTotal = qty * price;
             objTextBox.Text = String.Format("${0:F2}", diceTotal);
@@ -59,7 +59,7 @@ namespace FuzzyDice
         }
 
         private void AddToSubtotal(TextBox DiceSubtotal, TextBox Total)
-        {            
+        {
             string valorTexto = DiceSubtotal.Text;
             valorTexto = valorTexto.Replace("$", "");
             double subtotal = Convert.ToDouble(valorTexto);
@@ -84,12 +84,32 @@ namespace FuzzyDice
             }
             else
             {
-                txtDiscount.Text = String.Format("${0:F2}", discount);
+                txtDiscount.Text = String.Format("(${0:F2})", discount);
             }
+        }
+
+        private void CalcTotal()
+        {
+            OrderTotal += Subtotal + taxTotal + shipping;
+            if (discount > 0)
+            {
+                OrderTotal -= discount;
+            }
+            txtOrderTotal.Text = String.Format("${0:F2}", OrderTotal);
+        }
+
+        private void genOrderNumber()
+        {
+            Random random = new Random();
+            int orderNumber = random.Next(1000, 10000);
+            txtOrderNumber.Text = orderNumber.ToString();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // generar numero de orden
+            genOrderNumber();
             // establecer precios
             txtWB_Price.Text = String.Format("${0:F2}", wbPrice);
             txtRB_Price.Text = String.Format("${0:F2}", rbPrice);
@@ -198,8 +218,8 @@ namespace FuzzyDice
 
         private void txtSubtotal_TextChanged(object sender, EventArgs e)
         {
-            
-        }        
+
+        }
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
@@ -214,9 +234,8 @@ namespace FuzzyDice
                 CalcTaxDiscount();
                 // Asignar envio
                 CalcShipping();
-                txtDiceTotal.Text = diceQty.ToString();
                 // Mostrar Total
-
+                CalcTotal();
             }
             else
             {
