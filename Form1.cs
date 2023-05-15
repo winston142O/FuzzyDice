@@ -27,35 +27,16 @@ namespace FuzzyDice
             objTextBox.Text = String.Format("${0:F2}", diceTotal);
         }
 
-        private void CalcShipping()
+        private void verifyShipping()
         {
-            diceQty = 0;
-            int wbQty = 0;
-            int rbQty = 0;
-            int bbQty = 0;
-
-            if (txtWB_Qty.Text != "")
-            {
-                wbQty = Convert.ToInt32(txtWB_Qty.Text);
-            }
-            if (txtRB_Qty.Text != "")
-            {
-                rbQty = Convert.ToInt32(txtRB_Qty.Text);
-            }
-            if (txtBB_Qty.Text != "")
-            {
-                bbQty = Convert.ToInt32(txtBB_Qty.Text);
-            }
-            diceQty += wbQty + rbQty + bbQty;
-            if (diceQty > 0 && diceQty <= 20)
+            if (diceQty >= 1 && diceQty <= 20)
             {
                 shipping = 1.50;
             }
-            else if (diceQty > 20)
+            else
             {
                 shipping = 0.00;
             }
-            txtShipping.Text = String.Format("${0:F2}", shipping);
         }
 
         private void AddToSubtotal(TextBox DiceSubtotal, TextBox Total)
@@ -130,6 +111,47 @@ namespace FuzzyDice
             if (e.KeyChar >= Convert.ToChar(48) && e.KeyChar <= Convert.ToChar(59) || e.KeyChar == Convert.ToChar(8))
             {
                 e.Handled = false;
+            }
+            // si se pulsa enter
+            else if (e.KeyChar == Convert.ToChar(13))
+            {
+                e.Handled = false;
+                if (txtWB_Qty.Focused)
+                {
+                    DialogResult resp = MessageBox.Show(String.Format("¿Deseas agregar el monto {0:F2} al total de esta orden?", txtWB_Total.Text), "Confirmar", MessageBoxButtons.YesNo);
+                    if (resp == DialogResult.Yes)
+                    {
+                        AddToSubtotal(txtWB_Total, txtSubtotal);
+                    }
+                    else if (resp == DialogResult.No)
+                    {
+                        // nada
+                    }
+                }
+                else if (txtRB_Qty.Focused)
+                {
+                    DialogResult resp = MessageBox.Show(String.Format("¿Deseas agregar el monto {0:F2} al total de esta orden?", txtRB_Total.Text), "Confirmar", MessageBoxButtons.YesNo);
+                    if (resp == DialogResult.Yes)
+                    {
+                        AddToSubtotal(txtRB_Total, txtSubtotal);
+                    }
+                    else if (resp == DialogResult.No)
+                    {
+                        // nada
+                    }
+                }
+                else if (txtBB_Qty.Focused)
+                {
+                    DialogResult resp = MessageBox.Show(String.Format("¿Deseas agregar el monto {0:F2} al total de esta orden?", txtBB_Total.Text), "Confirmar", MessageBoxButtons.YesNo);
+                    if (resp == DialogResult.Yes)
+                    {
+                        AddToSubtotal(txtBB_Total, txtSubtotal);
+                    }
+                    else if (resp == DialogResult.No)
+                    {
+                        // nada
+                    }
+                }
             }
             else
             {
@@ -215,7 +237,7 @@ namespace FuzzyDice
                 txtBB_Qty.Enabled = false;
             }
         }
-
+        
         private void txtSubtotal_TextChanged(object sender, EventArgs e)
         {
 
@@ -242,6 +264,11 @@ namespace FuzzyDice
                 // mostrar error
                 MessageBox.Show("Debe ingresar correctamente su nombre completo y dirección ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // Asignar envio
+            // shipping not working
+            verifyShipping();
+            txtShipping.Text = String.Format("${0:F2}", shipping);
+
         }
     }
 }
