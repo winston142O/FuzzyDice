@@ -68,6 +68,7 @@
             txtTax = new TextBox();
             txtSubtotal = new TextBox();
             lblSubtotal = new Label();
+            txtDiceTotal = new TextBox();
             pnlOrderNumber.SuspendLayout();
             pnlCustomerDetails.SuspendLayout();
             pnlOrder.SuspendLayout();
@@ -393,6 +394,7 @@
             btnCalculate.TabIndex = 11;
             btnCalculate.Text = "Calculate";
             btnCalculate.UseVisualStyleBackColor = true;
+            btnCalculate.Click += btnCalculate_Click;
             // 
             // lblOrderTotal
             // 
@@ -490,11 +492,19 @@
             lblSubtotal.TabIndex = 7;
             lblSubtotal.Text = "Subtotal: ";
             // 
+            // txtDiceTotal
+            // 
+            txtDiceTotal.Location = new Point(67, 489);
+            txtDiceTotal.Name = "txtDiceTotal";
+            txtDiceTotal.Size = new Size(100, 23);
+            txtDiceTotal.TabIndex = 11;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(510, 689);
+            Controls.Add(txtDiceTotal);
             Controls.Add(panel1);
             Controls.Add(pnlOrder);
             Controls.Add(pnlCustomerDetails);
@@ -558,5 +568,6 @@
         private TextBox txtSubtotal;
         private Button btnCalculate;
         private TextBox txtRB_Price;
+        private TextBox txtDiceTotal;
     }
 }
